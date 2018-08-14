@@ -18,13 +18,13 @@ def is_straight(hand):
     index = []
     for i in hand:
         index.append(value.index(i[0]) + 2)
-    index.sort()  
+    index.sort()
     if index[0:4] == [2, 3, 4, 5] and index[4] == 14:
         return True
     for i in range(len(index)-1):
         if index[i]-index[i+1] != -1:
             return False
-    return True        
+    return True
 
 def is_flush(hand):
     '''
@@ -71,7 +71,7 @@ def hand_rank(hand):
     # third would be a straight with the return value 1
     # any other hand would be the fourth best with the return value 0
     # max in poker function uses these return values to select the best hand
-    return 1
+    
 
 def poker(hands):
     '''

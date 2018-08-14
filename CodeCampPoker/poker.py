@@ -5,6 +5,15 @@
 '''
 
 def is_straight(hand):
+    '''
+        How do we find out if the given hand is a straight?
+        The hand has a list of cards represented as strings.
+        There are multiple ways of checking if the hand is a straight.
+        Do we need both the characters in the string? No.
+        The first character is good enough to determine a straight
+        Think of an algorithm: given the card face value how to check if it a straight
+        Write the code for it and return True if it is a straight else return False
+    '''
     value = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
     index = []
     for i in hand:
@@ -17,24 +26,7 @@ def is_straight(hand):
             return False
     return True        
 
-
-    '''
-        How do we find out if the given hand is a straight?
-        The hand has a list of cards represented as strings.
-        There are multiple ways of checking if the hand is a straight.
-        Do we need both the characters in the string? No.
-        The first character is good enough to determine a straight
-        Think of an algorithm: given the card face value how to check if it a straight
-        Write the code for it and return True if it is a straight else return False
-    '''
-    
-
 def is_flush(hand):
-    suit = hand[0][1]
-    for i in hand:
-        if suit != i[1]:
-            return False
-    return True
     '''
         How do we find out if the given hand is a flush?
         The hand has a list of cards represented as strings.
@@ -43,7 +35,11 @@ def is_flush(hand):
         Think of an algorithm: given the card suite how to check if it is a flush
         Write the code for it and return True if it is a flush else return False
     '''
-    
+    suit = hand[0][1]
+    for i in hand:
+        if suit != i[1]:
+            return False
+    return True
 
 def hand_rank(hand):
     '''
@@ -59,8 +55,7 @@ def hand_rank(hand):
         return 2
     elif is_straight(hand):
         return 1
-    else:
-        return 0
+    return 0
     # By now you should have seen the way a card is represented.
     # If you haven't then go the main or poker function and print the hands
     # Each card is coded as a 2 character string. Example Kind of Hearts is KH

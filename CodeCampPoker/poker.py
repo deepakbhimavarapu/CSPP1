@@ -7,14 +7,11 @@
 def is_straight(hand):
     value = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
     index = []
-    
     for i in hand:
         index.append(value.index(i[0]) + 2)
-    index.sort()
-    
-    if index[0:4]==[2, 3, 4, 5] and index[4] == 14:
+    index.sort()  
+    if index[0:4] == [2, 3, 4, 5] and index[4] == 14:
         return True
-
     for i in range(len(index)-1):
         if index[i]-index[i+1] != -1:
             return False

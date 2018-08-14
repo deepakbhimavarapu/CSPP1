@@ -10,7 +10,6 @@ def is_straight(hand):
     # for i in hand:
     #     hand_values.append(str_values.index(i[0]))
     hand_values = sorted(set(["--23456789TJQKA".index(c) for c,x in hand]))
-    print(hand_values,"test")
     return (len(hand_values)==5 and max(hand_values)-min(hand_values) == 4) or (hand_values[0:4]==[2,3,4,5] and hand_values[-1]==14)
 
 

@@ -5,15 +5,12 @@
 '''
 
 def is_straight(hand):
-    str_values = '--23456789TJQKA'
-    hand_values = []
-    for i in hand:
-        hand_values.append(str_values.index(i[0]))
-    hand_values.sort()
-    for i in range(len(hand_values)-1):
-        if(hand_values[i] - hand_values[i+1] != -1):
-            return False
-    return True
+    # str_values = '--23456789TJQKA'
+    # hand_values = []
+    # for i in hand:
+    #     hand_values.append(str_values.index(i[0]))
+    hand_values = set(["--23456789TJQKA".index(c) for c,x in hand])
+    return len(hand_values)==5 and max(hand_values)-min(hand_values) == 4
 
 
     '''

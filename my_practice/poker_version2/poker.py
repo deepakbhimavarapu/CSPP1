@@ -6,6 +6,7 @@
 
 def get_hand_freq(hand):
     value_freq = {}
+    print(hand)
     for c,x in hand:
         if c in value_freq:
             value_freq[c] += 1

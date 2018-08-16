@@ -25,7 +25,7 @@ def is_two_pair(hand):
 
 def is_one_pair(hand):  
     value_freq = get_hand_freq(hand).values()
-    return len(value_freq) == 3 and max(value_freq) == 2
+    return len(value_freq) == 4 and max(value_freq) == 2
 
 def is_full_house(hand):
     value_freq = get_hand_freq(hand).values()
@@ -98,16 +98,22 @@ def hand_rank(hand):
     if is_four_kind(hand):
         return 7
     if is_full_house(hand):
+        print("hai")
         return 6
     if is_flush(hand):
+        print("hai1")
         return 5
     if is_straight(hand):
+        print("hai2")
         return 4
     if is_three_kind(hand):
+        print("hai3")
         return 3
     if is_two_pair(hand):
+        print("hai4")        
         return 2
     if is_one_pair(hand):
+        print("hai5")
         return 1
     return 0
     

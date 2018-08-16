@@ -9,11 +9,11 @@ def get_hand_freq(hand):
     get_hand_freq
     '''
     value_freq = {}
-    for c,x in hand:
-        if c in value_freq:
-            value_freq[c] += 1
+    for hand_value, hand_suit in hand:
+        if hand_value in value_freq:
+            value_freq[hand_value] += 1
         else:
-            value_freq[c] = 1
+            value_freq[hand_value] = 1
     return value_freq
 
 def is_four_kind(hand):
@@ -37,14 +37,14 @@ def is_two_pair(hand):
 
 def is_one_pair(hand):
     '''
-    is_one_pair 
+    is_one_pair
     '''
     value_freq = get_hand_freq(hand).values()
     return len(value_freq) == 4 and max(value_freq) == 2
 
 def is_full_house(hand):
     '''
-    full_house values of 3 cards should be same and 
+    full_house values of 3 cards should be same and
     values of remaining 2 cards should be same
     '''
     value_freq = get_hand_freq(hand).values()
@@ -124,7 +124,7 @@ def hand_rank(hand):
         return 4
     if is_three_kind(hand):
         return 3
-    if is_two_pair(hand):  
+    if is_two_pair(hand):
         return 2
     if is_one_pair(hand):
         return 1
@@ -157,7 +157,7 @@ if __name__ == "__main__":
     # iterate through the test cases to set up hands list
     HANDS = []
     for x in range(COUNT):
-        line = input().replace('\r','')
+        line = input().replace('\r', '')
         ha = line.split(" ")
         HANDS.append(ha)
     # test the poker function to see how it works

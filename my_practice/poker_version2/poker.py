@@ -141,10 +141,9 @@ if __name__ == "__main__":
     for x in range(COUNT):
         line = input().replace('\r','')
         ha = line.split(" ")
-        print(ha)
         HANDS.append(ha)
     # test the poker function to see how it works
-    # print(' '.join(poker(HANDS)))
+    print(' '.join(poker(HANDS)))
 
 # kind(['AD','AD','TD','JD','QD'])
 # print(is_straight(['AD','KD','TD','JD','QD']))

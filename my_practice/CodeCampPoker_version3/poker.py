@@ -161,7 +161,7 @@ def poker(hands):
             if i == max(return_values):
                 equal_hands.append(hands[i])
     else:
-        return hands[return_value.index(max(return_values))]
+        return hands[return_values.index(max(return_values))]
     get_max_hand(equal_hands)
 
 if __name__ == "__main__":

@@ -3,8 +3,20 @@
     Read about poker hands here.
     https://en.wikipedia.org/wiki/List_of_poker_hands
 '''
+
+def get_hand_list(hand):
+    value = '--23456789TJQKA'
+    index = []
+    for i in hand:
+        index.append(value.index(i[0]))
+    return index
+
+def get_high_value(hand):
+    return max(get_hand_list(hand))
+
 def get_max_hand(hands):
-    pass
+    return max(hands,key=get_high_value)
+    
 def get_hand_freq(hand):
     '''
     get_hand_freq
@@ -63,10 +75,7 @@ def is_straight(hand):
         Think of an algorithm: given the card face value how to check if it a straight
         Write the code for it and return True if it is a straight else return False
     '''
-    value = '--23456789TJQKA'
-    index = []
-    for i in hand:
-        index.append(value.index(i[0]))
+    index = get_hand_list(hand)
     index.sort()
     if index[0:4] == [2, 3, 4, 5] and index[4] == 14:
         return True
@@ -162,7 +171,7 @@ def poker(hands):
                 equal_hands.append(hands[i])
     else:
         return hands[return_values.index(max(return_values))]
-    get_max_hand(equal_hands)
+    return get_max_hand(equal_hands)
 
 if __name__ == "__main__":
     # read the number of test cases

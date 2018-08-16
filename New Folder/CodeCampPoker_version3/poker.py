@@ -3,71 +3,13 @@
     Read about poker hands here.
     https://en.wikipedia.org/wiki/List_of_poker_hands
 '''
+def hand_values(hand):
+    return sorted((["--23456789TJQKA".index(c) for c,x in hand]), reverse = True)
 
-def get_hand_list(hand):
-    value = '--23456789TJQKA'
-    index = []
-    for i in hand:
-        index.append(value.index(i[0]))
-    return index.sort()
-
-def get_max_hand(hands):
-    hand_list = []
-    for hand in hands:
-        hand_list.append(get_hand_list(hand))
-    
-    
+def is_straight(ranks):
+    return (len(hand_values)==5 and max(hand_values)-min(hand_values) == 4) or (hand_values[1:5]==[5, 4, 3, 2] and hand_values[0]==14)
 
 
-def get_hand_freq(hand):
-    '''
-    get_hand_freq
-    '''
-    value_freq = {}
-    for hand_value in hand:
-        if hand_value[0] in value_freq:
-            value_freq[hand_value[0]] += 1
-        else:
-            value_freq[hand_value[0]] = 1
-    return value_freq
-
-def is_four_kind(hand):
-    '''
-    is_four_kind
-    '''
-    return max(get_hand_freq(hand).values()) == 4
-
-def is_three_kind(hand):
-    '''
-    is_three_kind
-    '''
-    return max(get_hand_freq(hand).values()) == 3
-
-def is_two_pair(hand):
-    '''
-    is_two_pair
-    '''
-    value_freq = get_hand_freq(hand).values()
-    return len(value_freq) == 3 and max(value_freq) == 2
-
-def is_one_pair(hand):
-    '''
-    is_one_pair
-    '''
-    value_freq = get_hand_freq(hand).values()
-    return len(value_freq) == 4 and max(value_freq) == 2
-
-def is_full_house(hand):
-    '''
-    full_house values of 3 cards should be same and
-    values of remaining 2 cards should be same
-    '''
-    value_freq = get_hand_freq(hand).values()
-    return len(value_freq) == 2 and max(value_freq) == 3
-
-
-
-def is_straight(hand):
     '''
         How do we find out if the given hand is a straight?
         The hand has a list of cards represented as strings.
@@ -77,13 +19,17 @@ def is_straight(hand):
         Think of an algorithm: given the card face value how to check if it a straight
         Write the code for it and return True if it is a straight else return False
     '''
-    index = get_hand_list(hand)
-    if index[0:4] == [2, 3, 4, 5] and index[4] == 14:
-        return True
-    for i in range(len(index)-1):
-        if index[i]-index[i+1] != -1:
-            return False
-    return True
+def kind(ranks,n):
+    for i in ranks:
+        if ranks.count(i) == n:
+            return i
+
+def is_two_pair(ranks):
+    high_rep = kind(ranks,2)
+    low_rep = kind(sorted(ranks),2)
+    if high_rep != low_rep:
+        return high_rep, low_rep, ranks 
+        
 
 def is_flush(hand):
     '''
@@ -94,11 +40,12 @@ def is_flush(hand):
         Think of an algorithm: given the card suite how to check if it is a flush
         Write the code for it and return True if it is a flush else return False
     '''
-    suit = hand[0][1]
+    value_set = set()
     for i in hand:
-        if suit != i[1]:
-            return False
-    return True
+        value_set.add(i[1])
+
+    return len(value_set) == 1
+       
 
 def hand_rank(hand):
     '''
@@ -108,6 +55,24 @@ def hand_rank(hand):
         The first version should identify if the given hand is a straight
         or a flush or a straight flush.
     '''
+    rank = hand_values(hand)
+    if is_straight(rank) and is_flush(hand): # straightflush
+        return 8, rank
+    if kind(rank, 4):                        # four of a kind
+        return 7, kind(rank, 4),rank 
+    if kind(rank,3) and kind(rank,2):        # full house
+        return 6, kind(rank,3), kind(rank, 2), rank
+    if is_flush(hand):                       # flush
+        return 5, rank
+    if is_straight(hand):                    # Straight
+        return 4, rank
+    if kind(rank, 3):                        # three of a kind
+        return 3, kind(rank, 3),rank
+    if is_two_pair(rank)
+        return 2, is_two_pair(rank)
+    if kind(rank,2):
+        return 1, kind(rank,2), rank
+    return 0
     # By now you should have seen the way a card is represented.
     # If you haven't then go the main or poker function and print the hands
     # Each card is coded as a 2 character string. Example Kind of Hearts is KH
@@ -123,26 +88,10 @@ def hand_rank(hand):
     # third would be a straight with the return value 1
     # any other hand would be the fourth best with the return value 0
     # max in poker function uses these return values to select the best hand
-    if is_flush(hand) and is_straight(hand):
-        return 8
-    if is_four_kind(hand):
-        return 7
-    if is_full_house(hand):
-        return 6
-    if is_flush(hand):
-        return 5
-    if is_straight(hand):
-        return 4
-    if is_three_kind(hand):
-        return 3
-    if is_two_pair(hand):
-        return 2
-    if is_one_pair(hand):
-        return 1
-    return 0
-
+    
 
 def poker(hands):
+    
     '''
         This function is completed for you. Read it to learn the code.
 
@@ -160,20 +109,7 @@ def poker(hands):
     # hand_rank is a function passed to max
     # hand_rank takes a hand and returns its rank
     # max uses the rank returned by hand_rank and returns the best hand
-    # return max(hands, key=hand_rank)
-    return_values = []
-
-    for hand in hands:
-        return_values.append(hand_rank(hand))
-    equal_hands = []
-
-    if(return_values.count(max(return_values)) > 1):
-        for i in range(len(return_values)):
-            if return_values[i] == max(return_values):
-                equal_hands.append(hands[i])
-    else:
-        return hands[return_values.index(max(return_values))]
-    return get_max_hand(equal_hands)
+    return max(hands, key=hand_rank)
 
 if __name__ == "__main__":
     # read the number of test cases
@@ -181,11 +117,9 @@ if __name__ == "__main__":
     # iterate through the test cases to set up hands list
     HANDS = []
     for x in range(COUNT):
-        line = input().replace('\r', '')
+        line = input()
         ha = line.split(" ")
         HANDS.append(ha)
     # test the poker function to see how it works
     print(' '.join(poker(HANDS)))
-
-# kind(['AD','AD','TD','JD','QD'])
-# print(is_straight(['AD','KD','TD','JD','QD']))
+    # print(is_flush(['3D', '5A', 'AD', 'JD', '8D']))

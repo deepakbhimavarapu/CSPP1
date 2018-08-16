@@ -17,7 +17,7 @@ def is_four_kind(hand):
     return max(get_hand_freq(hand).values()) == 4
 
 def is_three_kind(hand):
-    return max(get_hand_freq(hand).values()) == 4
+    return max(get_hand_freq(hand).values()) == 3
 
 def is_two_pair(hand):
     value_freq = get_hand_freq(hand).values()

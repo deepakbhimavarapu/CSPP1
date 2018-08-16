@@ -21,10 +21,10 @@ def get_max_hand(hands):
         temp.append(get_high_value(hand))
     if temp.count((max(temp))) > 1:
         for hand in hands:
-            hand.remove(index.temp(max(temp)))
+            hand.remove(temp.index(max(temp)))
         return get_max_hand(hands)
     else:
-        return hands[index.temp(max(temp))]
+        return hands[temp.index(max(temp))]
 
 
 def get_hand_freq(hand):

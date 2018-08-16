@@ -16,7 +16,7 @@ def get_high_value(hand):
 
 def get_max_hand(hands):
     return max(hands,key=get_high_value)
-    
+
 def get_hand_freq(hand):
     '''
     get_hand_freq
@@ -165,9 +165,10 @@ def poker(hands):
     for hand in hands:
         return_values.append(hand_rank(hand))
     equal_hands = []
+
     if(return_values.count(max(return_values)) > 1):
         for i in range(len(return_values)):
-            if i == max(return_values):
+            if return_values[i] == max(return_values):
                 equal_hands.append(hands[i])
     else:
         return hands[return_values.index(max(return_values))]

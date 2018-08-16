@@ -16,6 +16,7 @@ def get_high_value(hand):
     return max(hand_list)
 
 def get_max_hand(hands):
+    temp_hands = hands
     temp = []
     for hand in hands:
         temp.append(get_high_value(hand))
@@ -24,7 +25,7 @@ def get_max_hand(hands):
             hand.pop(temp.index(max(temp)))
         return get_max_hand(hands)
     else:
-        return hands[temp.index(max(temp))]
+        return temp_hands[temp.index(max(temp))]
 
 
 def get_hand_freq(hand):

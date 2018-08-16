@@ -5,6 +5,9 @@
 '''
 
 def get_hand_freq(hand):
+    '''
+    get_hand_freq
+    '''
     value_freq = {}
     for c,x in hand:
         if c in value_freq:
@@ -14,20 +17,36 @@ def get_hand_freq(hand):
     return value_freq
 
 def is_four_kind(hand):
+    '''
+    is_four_kind
+    '''
     return max(get_hand_freq(hand).values()) == 4
 
 def is_three_kind(hand):
+    '''
+    is_three_kind
+    '''
     return max(get_hand_freq(hand).values()) == 3
 
 def is_two_pair(hand):
+    '''
+    is_two_pair
+    '''
     value_freq = get_hand_freq(hand).values()
     return len(value_freq) == 3 and max(value_freq) == 2
 
-def is_one_pair(hand):  
+def is_one_pair(hand):
+    '''
+    is_one_pair 
+    '''
     value_freq = get_hand_freq(hand).values()
     return len(value_freq) == 4 and max(value_freq) == 2
 
 def is_full_house(hand):
+    '''
+    full_house values of 3 cards should be same and 
+    values of remaining 2 cards should be same
+    '''
     value_freq = get_hand_freq(hand).values()
     return len(value_freq) == 2 and max(value_freq) == 3
 

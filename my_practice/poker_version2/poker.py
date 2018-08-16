@@ -98,22 +98,16 @@ def hand_rank(hand):
     if is_four_kind(hand):
         return 7
     if is_full_house(hand):
-        print("hai")
         return 6
     if is_flush(hand):
-        print("hai1")
         return 5
     if is_straight(hand):
-        print("hai2")
         return 4
     if is_three_kind(hand):
-        print("hai3")
         return 3
-    if is_two_pair(hand):
-        print("hai4")        
+    if is_two_pair(hand):  
         return 2
     if is_one_pair(hand):
-        print("hai5")
         return 1
     return 0
     

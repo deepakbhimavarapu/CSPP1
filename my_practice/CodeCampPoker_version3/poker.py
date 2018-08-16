@@ -156,7 +156,7 @@ def poker(hands):
     for hand in hands:
         return_values.append(hand_rank(hand))
     equal_hands = []
-    if(count(max(return_values)) > 1):
+    if(return_values.count(max(return_values)) > 1):
         for i in range(len(return_values)):
             if i == max(return_values):
                 equal_hands.append(hands[i])

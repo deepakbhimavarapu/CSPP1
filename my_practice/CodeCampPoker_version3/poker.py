@@ -3,7 +3,8 @@
     Read about poker hands here.
     https://en.wikipedia.org/wiki/List_of_poker_hands
 '''
-
+def get_max_hand(hands):
+    pass
 def get_hand_freq(hand):
     '''
     get_hand_freq
@@ -149,7 +150,19 @@ def poker(hands):
     # hand_rank is a function passed to max
     # hand_rank takes a hand and returns its rank
     # max uses the rank returned by hand_rank and returns the best hand
-    print(hands, key=hand_rank)
+    # return max(hands, key=hand_rank)
+    return_values = []
+
+    for hand in hands:
+        return_values.append(hand_rank(hand))
+    equal_hands = []
+    if(count(max(return_values)) > 1):
+        for i in range(len(return_values)):
+            if i == max(return_values):
+                equal_hands.append(hands[i])
+    else:
+        return hands[return_value.index(max(return_values))]
+    get_max_hand(equal_hands)
 
 if __name__ == "__main__":
     # read the number of test cases

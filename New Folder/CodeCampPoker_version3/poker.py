@@ -7,13 +7,13 @@ def hand_values(hand):
     return sorted((["--23456789TJQKA".index(c) for c,x in hand]), reverse = True)
 
 def is_straight(ranks):
-    return (len(hand_values)==5 and max(hand_values)-min(hand_values) == 4) or (hand_values[1:5]==[5, 4, 3, 2] and hand_values[0]==14)
+    return (max(ranks)-min(ranks) == 4 and len(set(ranks))==5) or (ranks[1:5]==[5, 4, 3, 2] and ranks[0]==14)
 
 
     '''
         How do we find out if the given hand is a straight?
         The hand has a list of cards represented as strings.
-        There are multiple ways of checking if the hand is a straight.
+       p There are multiple ways of checking if the hand is a straight.
         Do we need both the characters in the string? No.
         The first character is good enough to determine a straight
         Think of an algorithm: given the card face value how to check if it a straight
@@ -28,7 +28,7 @@ def is_two_pair(ranks):
     high_rep = kind(ranks,2)
     low_rep = kind(sorted(ranks),2)
     if high_rep != low_rep:
-        return high_rep, low_rep, ranks 
+        return high_rep, low_rep 
         
 
 def is_flush(hand):
@@ -59,17 +59,17 @@ def hand_rank(hand):
     if is_straight(rank) and is_flush(hand): # straightflush
         return 8, rank
     if kind(rank, 4):                        # four of a kind
-        return 7, kind(rank, 4),rank 
+        return 7, kind(rank, 4), rank 
     if kind(rank,3) and kind(rank,2):        # full house
         return 6, kind(rank,3), kind(rank, 2), rank
     if is_flush(hand):                       # flush
         return 5, rank
-    if is_straight(hand):                    # Straight
+    if is_straight(rank):                    # Straight
         return 4, rank
     if kind(rank, 3):                        # three of a kind
         return 3, kind(rank, 3),rank
     if is_two_pair(rank):
-        return 2, is_two_pair(rank)
+        return 2, is_two_pair(rank), rank
     if kind(rank,2):
         return 1, kind(rank,2), rank
     return 0

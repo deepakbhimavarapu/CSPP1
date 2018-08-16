@@ -3,8 +3,6 @@
     Read about poker hands here.
     https://en.wikipedia.org/wiki/List_of_poker_hands
 '''
-def get_high_cards(return_list, hands):
-    max_value = max(return_list)
 
 def get_hand_freq(hand):
     '''
@@ -151,7 +149,7 @@ def poker(hands):
     # hand_rank is a function passed to max
     # hand_rank takes a hand and returns its rank
     # max uses the rank returned by hand_rank and returns the best hand
-    return get_high_card((hands, key=hand_rank),hands)
+    print(hands, key=hand_rank)
 
 if __name__ == "__main__":
     # read the number of test cases

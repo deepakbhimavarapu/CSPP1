@@ -72,7 +72,7 @@ def hand_rank(hand):
         return 2, is_two_pair(rank), rank
     if kind(rank,2):
         return 1, kind(rank,2), rank
-    return 0
+    return 0, rank
     # By now you should have seen the way a card is represented.
     # If you haven't then go the main or poker function and print the hands
     # Each card is coded as a 2 character string. Example Kind of Hearts is KH

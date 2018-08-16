@@ -140,7 +140,7 @@ if __name__ == "__main__":
     HANDS = []
     for x in range(COUNT):
         line = input()
-        ha = line.split(" ,/r")
+        ha = line.split(" ")
         print(ha)
         HANDS.append(ha)
     # test the poker function to see how it works

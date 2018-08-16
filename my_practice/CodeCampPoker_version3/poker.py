@@ -21,7 +21,7 @@ def get_max_hand(hands):
         temp.append(get_high_value(hand))
     if temp.count((max(temp))) > 1:
         for hand in hands:
-            hand.remove(temp.index(max(temp)))
+            hand.pop(temp.index(max(temp)))
         return get_max_hand(hands)
     else:
         return hands[temp.index(max(temp))]

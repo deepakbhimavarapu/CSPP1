@@ -139,7 +139,7 @@ if __name__ == "__main__":
     # iterate through the test cases to set up hands list
     HANDS = []
     for x in range(COUNT):
-        line = input()
+        line = input().replace('/r','')
         ha = line.split(" ")
         print(ha)
         HANDS.append(ha)

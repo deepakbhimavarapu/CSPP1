@@ -9,11 +9,11 @@ def get_hand_freq(hand):
     get_hand_freq
     '''
     value_freq = {}
-    for hand_value, hand_suit in hand:
-        if hand_value in value_freq:
-            value_freq[hand_value] += 1
+    for hand_value in hand:
+        if hand_value[0] in value_freq:
+            value_freq[hand_value[0]] += 1
         else:
-            value_freq[hand_value] = 1
+            value_freq[hand_value[0]] = 1
     return value_freq
 
 def is_four_kind(hand):
@@ -129,7 +129,7 @@ def hand_rank(hand):
     if is_one_pair(hand):
         return 1
     return 0
-    
+
 
 def poker(hands):
     '''

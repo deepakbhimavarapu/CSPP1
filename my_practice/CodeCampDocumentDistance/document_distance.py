@@ -8,9 +8,7 @@ def build_dict(dict1):
     list_words = dict1.lower().split(" ")
     stop_words = load_stopwords("stopwords.txt")
     for word in list_words:
-        if "'" in word:
-            word.replace("'","")
-        if word not in stop_words: 
+        if word not in stop_word: 
             if word in dictionary:
                 dictionary[word] += 1
             else:
@@ -39,7 +37,7 @@ def similarity(dict1, dict2):
         numerator += value[0] * value[1]
         denominator1 += value[0] ** 2
         denominator2 += value[1] ** 2
-    print(common_dict)
+    # print(common_dict)
     denominator = (math.sqrt(denominator2) * math.sqrt(denominator2))
     if denominator == 0:
         return 0.0

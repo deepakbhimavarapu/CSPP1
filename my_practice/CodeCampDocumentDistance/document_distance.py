@@ -2,6 +2,7 @@
     Document Distance - A detailed description is given in the PDF
 '''
 import math
+name_file = "stopwords.txt"
 def build_dict(dict1):
     '''
     buid a dictionary from a list
@@ -9,7 +10,7 @@ def build_dict(dict1):
     dictionary = {}
     dict1 = ''.join(e for e in dict1 if e.isalpha() or e == ' ')
     list_words = dict1.lower().split(" ")
-    stop_words = load_stopwords("stopwords.txt")
+    stop_words = load_stopwords()
     for word in list_words:
         length = len(word)
         if word not in stop_words and length > 0:
@@ -57,7 +58,7 @@ def similarity(dict1, dict2):
 
 
 
-def load_stopwords(name_file):
+def load_stopwords():
     '''
         loads stop words from a file and returns a dictionary
     '''

@@ -4,7 +4,7 @@
 import math
 def build_dict(dict1):
     dictionary = {}
-    dict1 = ''.join(e for e in dict1 if e.isalnum() or e==' ')
+    dict1 = ''.join(e for e in dict1 if e.isalpha() or e==' ')
     list_words = dict1.lower().split(" ")
     stop_words = load_stopwords("stopwords.txt")
     for word in list_words:
@@ -34,10 +34,10 @@ def similarity(dict1, dict2):
     dictionary2 = build_dict(dict2)
     common_dict = built_common_dict(dictionary1, dictionary2)
     for key in dictionary1:
-        if key not in common_dict and len(key) != 0:
+        if key not in common_dict:
             common_dict[key] = [1,0]
     for key in dictionary2:
-        if key not in common_dict and len(key) != 0:
+        if key not in common_dict:
             common_dict[key] = [0,1]
         
     for value in common_dict.values():

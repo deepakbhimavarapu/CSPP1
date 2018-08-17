@@ -2,7 +2,6 @@
     Document Distance - A detailed description is given in the PDF
 '''
 import math
-name_file = "stopwords.txt"
 def build_dict(dict1):
     '''
     buid a dictionary from a list
@@ -67,7 +66,8 @@ def load_stopwords():
         for line in name_file:
             stopwords[line.strip()] = 0
     return stopwords
-
+    
+name_file = "stopwords.txt"
 def main():
     '''
         take two inputs and call the similarity function

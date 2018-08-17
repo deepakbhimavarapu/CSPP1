@@ -26,7 +26,9 @@ def similarity(dict1, dict2):
     '''
         Compute the document distance as given in the PDF
     '''
-   
+    numerator = 0
+    denominator1 = 0
+    denominator2 = 0
 
     dictionary1 = build_dict(dict1)
     dictionary2 = build_dict(dict2)

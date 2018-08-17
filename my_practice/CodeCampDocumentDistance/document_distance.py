@@ -38,7 +38,7 @@ def similarity(dict1, dict2):
             common_dict[key] = [1,0]
     for key in dictionary2:
         if key not in common_dict:
-            common_dict[key] = [1,0]
+            common_dict[key] = [0,1]
         
     for value in common_dict.values():
         numerator += value[0] * value[1]
@@ -48,6 +48,7 @@ def similarity(dict1, dict2):
     denominator = (math.sqrt(denominator2) * math.sqrt(denominator2))
     if denominator == 0:
         return 0.0
+    print(len(common_dict))
     return (numerator / denominator )
 
     

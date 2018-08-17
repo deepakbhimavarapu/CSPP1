@@ -7,7 +7,7 @@ def build_dict(dict1):
     dict1 = ''.join(e for e in dict1 if e.isalpha() or e==' ')
     list_words = dict1.lower().split(" ")
     stop_words = load_stopwords("stopwords.txt")
-    for word in list_words:
+    for word in list_words and len(word)>0:
         if word not in stop_words: 
             if word in dictionary:
                 dictionary[word] += 1

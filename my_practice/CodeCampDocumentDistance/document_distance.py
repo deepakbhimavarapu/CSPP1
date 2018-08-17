@@ -43,7 +43,7 @@ def similarity(dict1, dict2):
         numerator += value[0] * value[1]
         denominator1 += value[0] ** 2
         denominator2 += value[1] ** 2
-    print common_dict
+    print(common_dict)
     denominator = (math.sqrt(denominator2) * math.sqrt(denominator2))
     if denominator == 0:
         return 0.0

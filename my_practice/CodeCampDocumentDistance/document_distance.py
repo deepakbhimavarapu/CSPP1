@@ -48,7 +48,7 @@ def similarity(dict1, dict2):
     denominator = (math.sqrt(denominator2) * math.sqrt(denominator2))
     if denominator == 0:
         return 0.0
-    print(sorted((common_dict).keys()))
+    print(len((common_dict).keys()))
     return (numerator / denominator )
 
     

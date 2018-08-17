@@ -9,7 +9,7 @@ def build_dict(dict1):
     dictionary = {}
     dict1 = ''.join(e for e in dict1 if e.isalpha() or e == ' ')
     list_words = dict1.lower().split(" ")
-    stop_words = load_stopwords()
+    stop_words = load_stopwords("stopwords.txt")
     for word in list_words:
         length = len(word)
         if word not in stop_words and length > 0:
@@ -57,7 +57,7 @@ def similarity(dict1, dict2):
 
 
 
-def load_stopwords():
+def load_stopwords(name_file):
     '''
         loads stop words from a file and returns a dictionary
     '''
@@ -66,8 +66,7 @@ def load_stopwords():
         for line in name_file:
             stopwords[line.strip()] = 0
     return stopwords
-    
-name_file = "stopwords.txt"
+
 def main():
     '''
         take two inputs and call the similarity function

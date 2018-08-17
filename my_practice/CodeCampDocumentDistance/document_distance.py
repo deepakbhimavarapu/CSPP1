@@ -4,11 +4,7 @@
 import math
 def build_dict(dict1):
     dictionary = {}
-    dict1.replace(",","")
-    dict1.replace("?","")
-    dict1.replace("-","")
-    dict1.replace(".","")
-
+    dict1 = ''.join(e for e in dict1 if e.isalnum() or e==' ')
     list_words = dict1.lower().split(" ")
     stop_words = load_stopwords("stopwords.txt")
     for word in list_words:

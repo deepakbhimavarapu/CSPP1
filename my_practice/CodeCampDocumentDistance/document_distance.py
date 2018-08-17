@@ -4,6 +4,11 @@
 import math
 def build_dict(dict1):
     dictionary = {}
+    dict1.replace(",","")
+    dict1.replace("?","")
+    dict1.replace("-","")
+    dict1.replace(".","")
+
     list_words = dict1.lower().split(" ")
     stop_words = load_stopwords("stopwords.txt")
     for word in list_words:
@@ -39,7 +44,7 @@ def similarity(dict1, dict2):
         denominator1 += value[0] ** 2
         denominator2 += value[1] ** 2
 
-    print(numerator / (Math.sqrt(denominator2) * Math.sqrt(denominator2)))
+    print(numerator / (math.sqrt(denominator2) * math.sqrt(denominator2)))
 
     
 

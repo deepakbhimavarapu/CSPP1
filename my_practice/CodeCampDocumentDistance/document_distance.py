@@ -13,7 +13,8 @@ def build_dict(dict1):
                 dictionary[word] += 1
             else:
                 dictionary[word] = 1
-    return dictionary1
+    return dictionary
+    
 def built_common_dict(dict1, dict2):
     common_dict = {}
     for key in dict1:
@@ -25,6 +26,8 @@ def similarity(dict1, dict2):
     '''
         Compute the document distance as given in the PDF
     '''
+   
+
     dictionary1 = build_dict(dict1)
     dictionary2 = build_dict(dict2)
     common_dict = built_common_dict(dict1, dict2)

@@ -3,12 +3,16 @@
 '''
 import math
 def build_dict(dict1):
+    '''
+    buid a dictionary from a list
+    '''
     dictionary = {}
     dict1 = ''.join(e for e in dict1 if e.isalpha() or e == ' ')
     list_words = dict1.lower().split(" ")
     stop_words = load_stopwords("stopwords.txt")
     for word in list_words:
-        if word not in stop_words and len(word) > 0:
+        length = len(word)
+        if word not in stop_words and length > 0:
             if word in dictionary:
                 dictionary[word] += 1
             else:
@@ -16,6 +20,9 @@ def build_dict(dict1):
     return dictionary
 
 def built_common_dict(dict1, dict2):
+    '''
+    Buid a common dictionary from two dictionaries
+    '''
     common_dict = {}
     for key in dict1:
         if key in dict2:
@@ -48,15 +55,15 @@ def similarity(dict1, dict2):
         return 0.0
     return numerator / denominator
 
-    
 
-def load_stopwords(filename):
+
+def load_stopwords(file_name):
     '''
         loads stop words from a file and returns a dictionary
     '''
     stopwords = {}
-    with open(filename, 'r') as filename:
-        for line in filename:
+    with open(filename, 'r') as file_name:
+        for line in file_name:
             stopwords[line.strip()] = 0
     return stopwords
 

@@ -14,7 +14,7 @@ def build_dict(dict1):
             else:
                 dictionary[word] = 1
     return dictionary
-    
+
 def built_common_dict(dict1, dict2):
     common_dict = {}
     for key in dict1:
@@ -30,7 +30,7 @@ def similarity(dict1, dict2):
 
     dictionary1 = build_dict(dict1)
     dictionary2 = build_dict(dict2)
-    common_dict = built_common_dict(dict1, dict2)
+    common_dict = built_common_dict(dictionary1, dictionary2)
     for value in common_dict.values():
         numerator += value[0] * value[1]
         denominator1 += value[0] ** 2

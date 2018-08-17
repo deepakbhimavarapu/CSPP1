@@ -35,11 +35,10 @@ def similarity(dict1, dict2):
     common_dict = built_common_dict(dictionary1, dictionary2)
     for key in dictionary1:
         if key not in common_dict:
-            common_dict[key] = [dictionary1.count(key),0]
+            common_dict[key] = [dictionary1[key],0]
     for key in dictionary2:
         if key not in common_dict:
-            common_dict[key] = [0,dictionary2.count(key)]
-        
+            common_dict[key] = [0,dictionary2[key]]        
     for value in common_dict.values():
         numerator += value[0] * value[1]
         denominator1 += value[0] ** 2

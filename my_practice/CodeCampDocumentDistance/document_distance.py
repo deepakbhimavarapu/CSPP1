@@ -3,7 +3,7 @@
 '''
 def build_dict(dict1):
     dictionary = {}
-    list_words = dict1.split(" ").lower()
+    list_words = dict1.lower().split(" ")
     stop_words = load_stopwords("stopwords.txt")
     for word in list_words:
         if "'" in word:

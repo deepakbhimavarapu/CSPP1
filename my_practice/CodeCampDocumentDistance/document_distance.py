@@ -1,6 +1,7 @@
 '''
     Document Distance - A detailed description is given in the PDF
 '''
+import math
 def build_dict(dict1):
     dictionary = {}
     list_words = dict1.lower().split(" ")

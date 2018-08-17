@@ -62,7 +62,7 @@ def load_stopwords(file_name):
         loads stop words from a file and returns a dictionary
     '''
     stopwords = {}
-    with open(filename, 'r') as file_name:
+    with open(file_name, 'r') as file_name:
         for line in file_name:
             stopwords[line.strip()] = 0
     return stopwords

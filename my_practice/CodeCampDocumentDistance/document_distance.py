@@ -57,13 +57,13 @@ def similarity(dict1, dict2):
 
 
 
-def load_stopwords(file_name):
+def load_stopwords(name_file):
     '''
         loads stop words from a file and returns a dictionary
     '''
     stopwords = {}
-    with open(file_name, 'r') as file_name:
-        for line in file_name:
+    with open(name_file, 'r') as name_file:
+        for line in name_file:
             stopwords[line.strip()] = 0
     return stopwords
 
